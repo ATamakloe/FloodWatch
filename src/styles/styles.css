@@ -1,0 +1,89 @@
+/* Reset */
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p,
+table, caption, tbody, tfoot, thead, tr, th, td, footer, header, {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+h1, h3 {
+	text-align: center;
+}
+
+#GoogleMapsContainer {
+	width: 60%;
+	height: 60%;
+	background-color: green;
+	border: 1px solid green;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#WeatherBox {
+	width: 13%;
+	height: 6%;
+	background-color: white;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	text-align: center;
+}
+
+
+
+nav {
+	text-align: center;
+	border: 1px solid green;
+}
+
+.CityTabs ul {
+	width: auto;
+	display: inline-block;
+}
+.CityTabs li {
+	display: inline-block;
+	list-style-type: none;
+	height: 40px;
+	background-color: white;
+	border: 1px solid grey;
+	text-align: center;
+}
+
+
+table {
+	overflow: auto;
+	border-collapse: collapse;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 20px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+th, td {
+	padding: 5px;
+	text-align: left;
+}
+
+tr {
+	min-height: 18px;
+}
+tr:hover {
+	background-color: rgba(212, 239, 245, 0.5);
+}
+
+footer {
+	width:100%;
+	text-align:center;
+}

@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
+  <meta charset="utf-8">
+  <link type="text/css" href="styles/styles.css" />
+  <title>Texas Water Watch</title>
 </head>
+
 <body>
-  <h1>webpack starter</h1>
-  <p>✨ A lightweight foundation for your next webpack based frontend project.</p>
+  <h1>Texas Water Watch</h1>
+  <h3>Last Updated: <span id="CurrentTime"></span></h3>
+  <nav>
+    <ul class="CityTabs">
+      <li id="Houston">
+        <a href=#>Houston</a>
+      </li>
+
+      <li id="Austin">
+        <a href=#>Austin</a>
+      </li>
+
+      <li id="SanAntonio">
+        <a href=#>San Antonio</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div id="GoogleMapsContainer">
+    <div id="WeatherBox">
+      54F
+    </div>
+  </div>
+
+  <table id="TABLE">
+    <caption>
+      Discharge Values
+    </caption>
+    <tr>
+      <th scope="Site-Name-Column">
+        Sample Site
+      </th>
+      <th scope="Water-Height-Column">
+        Height (ft)
+      </th>
+      <th scope="Average-Water-Height-Column">
+        Avg. Height. (ft)
+      </th>
+    </tr>
+  </table>
+
+  </div>
+  <footer>
+    <p>Created by Albert Tamakloe</p>
+    <p>Powered by USGS</p>
+  </footer>
 </body>
+<script type="text/javascript" src="/scripts/index.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBePxwfRrQT-k9FUxee9ONIaRyCy6z3oRE&callback=initMap"></script>
+
 </html>
