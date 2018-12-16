@@ -8,20 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wbkd/webpack-starter.git"
+    "url": "https://github.com/ATamakloe/FloodWatch.git"
   },
-  "keywords": [
-    "webpack",
-    "startkit",
-    "frontend",
-    "es6",
-    "javascript",
-    "webdev"
-  ],
-  "author": "webkid.io",
+  "keywords": [],
+  "author": "ATamakloe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wbkd/webpack-starter/issues"
+    "url": "https://github.com/ATamakloe/FloodWatch.git/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

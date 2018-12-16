@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Webpack Frontend Starterkit
 
 A lightweight foundation for your next webpack based frontend project.
@@ -28,3 +29,7 @@ npm run build
 * Linting via [eslint-loader](https://github.com/MoOx/eslint-loader)
 
 When you run `npm run build` we use the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to move the css to a separate file. The css file gets included in the head of the `index.html`.
+=======
+# FloodWatch
+Repo for Flood Watch
+>>>>>>> 1c7de98594078e486b44f749b4b45e152fc5cf20
