@@ -33,11 +33,23 @@ const renderMarkers = function(data) {
       map: map,
       title: element.siteName,
       id: element.siteCode,
-    });
+      });
+
     let infowindow = new google.maps.InfoWindow({
       content: `${element.siteName}.  Water Height:${element.siteValue}`
     });
 
+    let valoveravg = element.siteMean == "N/A" ? "N/A" : (element.siteValue / element.siteMean);
+    if (valoveravg == "N/A") {
+      marker.setIcon("../../public/assets/noavg.png")
+    } else if (valoveravg <=1.25) {
+      marker.setIcon("../../public/assets/safeflag.png")
+    } else if (valoveravg > 1.25 && valoveravg < 1.5) {
+      marker.setIcon("../../public/assets/cautionflag.png")
+    } else if (valoveravg => 1.5) {
+      marker.setIcon("../../public/assets/dangerflag.png")
+    };
+  
     google.maps.event.addListener(marker, 'click', () => infowindow.open(map, marker));
   });
 };

@@ -27,18 +27,6 @@ h1, h3 {
 	position: relative;
 }
 
-#WeatherBox {
-	width: 13%;
-	height: 6%;
-	background-color: white;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	text-align: center;
-}
-
-
-
 nav {
 	text-align: center;
 	border: 1px solid green;
