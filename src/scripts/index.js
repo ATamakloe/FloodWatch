@@ -48,13 +48,13 @@ const renderMarkers = function(data) {
 
     let valoveravg = element.siteMean == "N/A" ? "N/A" : (element.siteValue / element.siteMean);
     if (valoveravg == "N/A") {
-      marker.setIcon("../../public/assets/noavgflag.png")
+      marker.setIcon("../../public/assets/noavgflag.png");
     } else if (valoveravg <=1.25) {
-      marker.setIcon("../../public/assets/safeflag.png")
+      marker.setIcon("../../public/assets/safeflag.png");
     } else if (valoveravg > 1.25 && valoveravg < 1.5) {
-      marker.setIcon("../../public/assets/cautionflag.png")
+      marker.setIcon("../../public/assets/cautionflag.png");
     } else if (valoveravg => 1.5) {
-      marker.setIcon("../../public/assets/dangerflag.png")
+      marker.setIcon("../../public/assets/dangerflag.png");
     };
 
     google.maps.event.addListener(marker, 'click', () => infowindow.open(map, marker));
@@ -110,18 +110,18 @@ document.querySelectorAll("li").forEach(function(link) {
 const initTable = function(city) {
   let row = document.getElementById('TABLE');
   city.stationData.then(function(data) {
-    document.getElementById("TableCaptionCityName").innerHTML=`${city.cityName}`
+    document.getElementById("TableCaptionCityName").innerHTML=`${city.cityName}`;
   data.map(function(results) {
     //Create a new row
     let newRow = row.insertRow(1);
     newRow.className+=`${city.cityName}`;
-    newRow.id = `${results.siteCode}`
+    newRow.id = `${results.siteCode}`;
     //Give that row Site Name, Water Height, and Average Height Cells
     let newCell = newRow.insertCell(0);
     newCell.className += "SiteNames";
-    let newCell2 = newRow.insertCell(1)
+    let newCell2 = newRow.insertCell(1);
     newCell2.className += "WaterHeight";
-    let newCell3 = newRow.insertCell(2)
+    let newCell3 = newRow.insertCell(2);
     newCell3.className += "AverageHeight";
     //Put data in those cells
     let newText = document.createTextNode(results.siteName);
@@ -131,7 +131,7 @@ const initTable = function(city) {
     newCell2.appendChild(newText2);
     newCell3.appendChild(newText3);
   });
-  })
+});
 };
 
 initTable(Houston);

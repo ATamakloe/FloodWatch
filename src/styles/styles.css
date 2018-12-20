@@ -12,6 +12,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	margin: 0;
+	font-family: 'Open Sans', sans-serif;
 }
 
 :root {
@@ -20,6 +21,7 @@ html, body {
 	}
 
 h1, h3 {
+	font-family: 'Roboto', sans-serif, !important;
 	text-align: center;
 }
 
@@ -32,8 +34,7 @@ header {
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-
-	background-color: rgb(239, 239, 239)
+	background-color: rgb(249, 249, 249)
 }
 
 nav {
@@ -80,7 +81,7 @@ button:hover {
 }
 
 #MapLegend span {
-	font-size: 1vw;
+	font-size: 0.9vw;
 	margin-left: 10px;
 	margin-right:10px;
 }
@@ -129,6 +130,9 @@ tr:hover {
 }
 
 footer {
+	margin-top: 1vh;
+	padding-top: 1vh;
 	width:100%;
 	text-align:center;
+	background-color: rgb(249, 249, 249)
 }
