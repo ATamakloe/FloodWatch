@@ -12,14 +12,17 @@ class City {
 
 
   constructor(cityName, cityCenterLocation, cityBBox) {
-    City.checkCityArr(cityName)
+    City.checkCityArr(cityName);
     this._cityName = cityName;
     this._cityCenter = cityCenterLocation;
     this._cityBBox = cityBBox;
     this._stationData = [];
 
-    let date = new Date();
-    this._date = new Date(date.getTime() - (date.getTimezoneOffset() * 60000) - 30 * 60000).toISOString()
+    this._date = (function(){
+      const date = new Date();
+      return new Date(date.getTime() - (date.getTimezoneOffset() * 60000) - 30 * 60000).toISOString();
+    })();
+
     this._url = `https://waterservices.usgs.gov/nwis/iv/?format=json&variable=00065&bBox=${this.cityBBox}&startDT=${this._date}`;
 
     this.getStationData = async function() {
@@ -34,8 +37,8 @@ class City {
         siteValue: data.values["0"].value.slice(-1)[0] ? data.values["0"].value.slice(-1)[0].value : "Value unavailable",
         siteMean: dataJSON.hasOwnProperty(data.sourceInfo.siteCode[0].value) ? dataJSON[data.sourceInfo.siteCode[0].value].Mean : "N/A",
       }));
+      stationArray = stationArray.filter(station => station.siteValue != "Value unavailable");
       return stationArray;
-
     };
   }
 
