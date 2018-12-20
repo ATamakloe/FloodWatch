@@ -10,7 +10,7 @@ to USGS*/
 
 const Houston = new City("Houston", [29.74, -95.36], [-95.7, 29.6, -95.02, 30.00]);
 const Austin = new City("Austin", [30.26, -97.74], [-98.12, 30.05, -97.31, 30.61]);
-const SanAntonio = new City("SanAntonio", [29.41, -98.49], [-99.1, 29.02, -97.95, 29.67]);
+const SanAntonio = new City("San Antonio", [29.41, -98.49], [-99.1, 29.02, -97.95, 29.67]);
 let cityArray = [Houston, Austin, SanAntonio];
 
 
@@ -48,7 +48,7 @@ const renderMarkers = function(data) {
 
     let valoveravg = element.siteMean == "N/A" ? "N/A" : (element.siteValue / element.siteMean);
     if (valoveravg == "N/A") {
-      marker.setIcon("../../public/assets/noavg.png")
+      marker.setIcon("../../public/assets/noavgflag.png")
     } else if (valoveravg <=1.25) {
       marker.setIcon("../../public/assets/safeflag.png")
     } else if (valoveravg > 1.25 && valoveravg < 1.5) {
@@ -110,6 +110,7 @@ document.querySelectorAll("li").forEach(function(link) {
 const initTable = function(city) {
   let row = document.getElementById('TABLE');
   city.stationData.then(function(data) {
+    document.getElementById("TableCaptionCityName").innerHTML=`${city.cityName}`
   data.map(function(results) {
     //Create a new row
     let newRow = row.insertRow(1);

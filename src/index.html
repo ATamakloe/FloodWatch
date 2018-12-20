@@ -10,41 +10,53 @@
 </head>
 
 <body>
+<header>
   <h1>Texas Water Watch</h1>
   <h3>Last Updated: <span id="CurrentTime"></span></h3>
+</header>
   <nav>
     <ul class="CityTabs">
       <li id="Houston">
-        <a href=#>Houston</a>
+        <button>Houston</button>
       </li>
 
       <li id="Austin">
-        <a href=#>Austin</a>
+        <button>Austin</button>
       </li>
 
       <li id="SanAntonio">
-        <a href=#>San Antonio</a>
+        <button>San Antonio</button>
       </li>
     </ul>
   </nav>
 
+  <div id="GoogleMapsContainer"></div>
 
-  <div id="GoogleMapsContainer">
+  <div id="MapLegend">
+    <span><img src="../public/assets/safeflag.png" alt="A Green Flag" height="20" width="20">:Normal Water Level </span>
+
+    <span><img src="../public/assets/cautionflag.png" alt="A Yellow Flag" height="20" width="20">:Slightly Higher than Average Water Level </span>
+
+    <span><img src="../public/assets/dangerflag.png" alt="A Red Flag" height="20" width="20">:Higher than Average Water Level </span>
+
+    <span><img src="../public/assets/noavgflag.png" alt="A Grey Flag" height="20" width="20">:No Average Water Level </span>
   </div>
+
+
 
   <table id="TABLE">
     <caption>
-      Site Names and Water Height 
+      <span id="TableCaptionCityName">Site Names and</span> Water Height
     </caption>
     <tr>
       <th scope="Site-Name-Column">
-        Sample Site
+        <strong>Sample Site</strong>
       </th>
       <th scope="Water-Height-Column">
-        Height (ft)
+        <strong>Height (ft)</strong>
       </th>
       <th scope="Average-Water-Height-Column">
-        Avg. Height. (ft)
+        <strong>Avg. Height (ft)</strong>
       </th>
     </tr>
   </table>
