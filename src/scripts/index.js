@@ -116,6 +116,7 @@ const initTable = function(city) {
     let newRow = row.insertRow(1);
     newRow.className+=`${city.cityName}`;
     newRow.id = `${results.siteCode}`;
+    newRow.setAttribute("tabindex","0");
     //Give that row Site Name, Water Height, and Average Height Cells
     let newCell = newRow.insertCell(0);
     newCell.className += "SiteNames";
