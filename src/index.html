@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" type="image/ico" href="../public/assets/favicon.ico"/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" />
   <link type="text/css" href="styles/styles.css" />
   <title>Texas Water Watch</title>
 </head>
@@ -54,29 +55,32 @@
   </div>
 
 
-
-  <table id="TABLE">
+<div id="TableContainer">
+    <table id="TABLE" class="ui celled very compact small table">
     <caption>
     <h3><span id="TableCaptionCityName">Site Names and</span> Water Height</h3>
     </caption>
-    <tr>
-      <th scope="Site-Name-Column">
-        <strong>Site Name</strong>
-      </th>
-      <th scope="Water-Height-Column">
-        <strong>Height (ft)</strong>
-      </th>
-      <th scope="Average-Water-Height-Column">
-        <strong>Avg. Height (ft)</strong>
-      </th>
-    </tr>
+      <thead>
+       <tr>
+         <th scope="Site-Name-Column">
+           <strong>Site Name</strong>
+         </th>
+         <th scope="Water-Height-Column">
+           <strong>Height (ft)</strong>
+        </th>
+        <th scope="Average-Water-Height-Column">
+          <strong>Avg. Height (ft)</strong>
+        </th>
+      </tr>
+    </thead>
   </table>
+</div>
 
   </div>
   <footer>
     <address>
       Made by <a href="mailto:alberttamakloe@gmail.com">Albert Tamakloe</a>.<br>
-      Github:<a href="https://github.com/ATamakloe">ATamakloe</a>
+      Github: <a href="https://github.com/ATamakloe/FloodWatch">ATamakloe</a>
     </address>
     <p>Created by Albert Tamakloe</p>
     <p>Powered by USGS</p>

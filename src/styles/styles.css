@@ -64,9 +64,9 @@ button:hover {
       background-color: var(--buttoncolor);
       color: white;
  }
- 
+
 #GoogleMapsContainer {
-	width: 60%;
+	width: 70%;
 	height: 60%;
 	background-color: green;
 	border: 1px solid green;
@@ -87,21 +87,16 @@ button:hover {
 	margin-right:10px;
 }
 
-#WeatherBox {
-	width: 13%;
-	height: 6%;
-	background-color: white;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	text-align: center;
+#TableContainer {
+	width: 70%;
+	margin-left:15%;
+	margin-right: 15%;
 }
-
 
 table {
 	overflow: auto;
 	border-collapse: collapse;
-	width: 60%;
+	width: 60%, !important;
 	margin-left: 20%;
 	margin-right: 20%;
 	margin-top: 20px;
@@ -123,12 +118,6 @@ tr {
 	min-height: 18px;
 }
 
-tr:first-child {
-	background-color: var(--bluehighlightcolor);
-}
-tr:hover {
-	background-color: var(--bluehighlightcolor);
-}
 
 footer {
 	margin-top: 1vh;

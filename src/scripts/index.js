@@ -25,13 +25,25 @@ const mapConfig = {
 const initMap = function() {
   map = new google.maps.Map(document.getElementById('GoogleMapsContainer'), {
     center: mapConfig,
-    zoom: 10,
+    zoom: 11,
     mapTypeId: 'terrain'
   });
 };
 window.initMap = initMap;
 
 
+const computeValueOverMean = (value, mean) => {
+  let valoveravg = mean == "N/A" ? "N/A" : (value / mean);
+  if (valoveravg == "N/A") {
+    return "N/A"
+  } else if (valoveravg <=1.25) {
+    return "Safe"
+  } else if (valoveravg > 1.25 && valoveravg < 1.5) {
+    return "Caution"
+  } else if (valoveravg => 1.5) {
+    return "Danger"
+  };
+};
 
 const renderMarkers = function(data) {
   data.forEach(function(element) {
@@ -46,14 +58,14 @@ const renderMarkers = function(data) {
       content: `${element.siteName}.  Water Height:${element.siteValue} ft`
     });
 
-    let valoveravg = element.siteMean == "N/A" ? "N/A" : (element.siteValue / element.siteMean);
-    if (valoveravg == "N/A") {
+
+    if (computeValueOverMean(element.siteValue, element.siteMean) == "N/A") {
       marker.setIcon("../../public/assets/noavgflag.png");
-    } else if (valoveravg <=1.25) {
+    } else if (computeValueOverMean(element.siteValue, element.siteMean) == "Safe") {
       marker.setIcon("../../public/assets/safeflag.png");
-    } else if (valoveravg > 1.25 && valoveravg < 1.5) {
+    } else if (computeValueOverMean(element.siteValue, element.siteMean) == "Caution") {
       marker.setIcon("../../public/assets/cautionflag.png");
-    } else if (valoveravg => 1.5) {
+    } else if (computeValueOverMean(element.siteValue, element.siteMean) == "Danger") {
       marker.setIcon("../../public/assets/dangerflag.png");
     };
 
@@ -87,9 +99,9 @@ const changeTableOnClick = function() {
    If its the city that was clicked on, do nothing. If it isn't,
    wipe the table and load the city that was clicked on
   */
-  let tableCheck = document.getElementById("TABLE").rows[1].className;
+  let tableCheck = document.getElementById("TABLE").rows[1].classList[0];
   let rowArray = [...document.getElementsByClassName(tableCheck)];
-  if (this.id == tableCheck) {
+  if (this.id == tableCheck[0]) {
     return;
   } else if (this.id != tableCheck) {
     rowArray.forEach(trow => trow.parentNode.removeChild(trow));
@@ -108,6 +120,7 @@ document.querySelectorAll("li").forEach(function(link) {
 
 //Function to initialize the table
 const initTable = function(city) {
+  //Refactor this before it becomes a monster
   let row = document.getElementById('TABLE');
   city.stationData.then(function(data) {
     document.getElementById("TableCaptionCityName").innerHTML=`${city.cityName}`;
@@ -120,10 +133,14 @@ const initTable = function(city) {
     //Give that row Site Name, Water Height, and Average Height Cells
     let newCell = newRow.insertCell(0);
     newCell.className += "SiteNames";
+    newCell.setAttribute("data-label","Site Name")
     let newCell2 = newRow.insertCell(1);
     newCell2.className += "WaterHeight";
+    newCell2.setAttribute("data-label","Water Height")
     let newCell3 = newRow.insertCell(2);
     newCell3.className += "AverageHeight";
+    newCell3.setAttribute("data-label","Average Height")
+
     //Put data in those cells
     let newText = document.createTextNode(results.siteName);
     let newText2 = document.createTextNode(results.siteValue);
@@ -131,6 +148,20 @@ const initTable = function(city) {
     newCell.appendChild(newText);
     newCell2.appendChild(newText2);
     newCell3.appendChild(newText3);
+
+    /*Style each table row depending on site value to site mean ratio (see computeValueOverMean function)
+    class names come from SemanticUI. See: https://semantic-ui.com/collections/table.html */
+
+    if (computeValueOverMean(results.siteValue, results.siteMean) == "N/A") {
+      newRow.className+=" active";
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Safe") {
+      newRow.className+=" positive";
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Caution") {
+      newRow.className+=" warning";
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Danger") {
+      newRow.className+=" negative";
+    };
+
   });
 });
 };
