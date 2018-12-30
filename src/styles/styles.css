@@ -64,6 +64,7 @@ button:hover {
       background-color: var(--buttoncolor);
       color: white;
  }
+ 
 #GoogleMapsContainer {
 	width: 60%;
 	height: 60%;
