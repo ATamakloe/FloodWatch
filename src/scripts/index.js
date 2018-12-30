@@ -35,13 +35,13 @@ window.initMap = initMap;
 const computeValueOverMean = (value, mean) => {
   let valoveravg = mean == "N/A" ? "N/A" : (value / mean);
   if (valoveravg == "N/A") {
-    return "N/A"
+    return "N/A";
   } else if (valoveravg <=1.25) {
-    return "Safe"
+    return "Safe";
   } else if (valoveravg > 1.25 && valoveravg < 1.5) {
-    return "Caution"
+    return "Caution";
   } else if (valoveravg => 1.5) {
-    return "Danger"
+    return "Danger";
   };
 };
 
@@ -133,13 +133,13 @@ const initTable = function(city) {
     //Give that row Site Name, Water Height, and Average Height Cells
     let newCell = newRow.insertCell(0);
     newCell.className += "SiteNames";
-    newCell.setAttribute("data-label","Site Name")
+    newCell.setAttribute("data-label","Site Name");
     let newCell2 = newRow.insertCell(1);
     newCell2.className += "WaterHeight";
-    newCell2.setAttribute("data-label","Water Height")
+    newCell2.setAttribute("data-label","Water Height");
     let newCell3 = newRow.insertCell(2);
     newCell3.className += "AverageHeight";
-    newCell3.setAttribute("data-label","Average Height")
+    newCell3.setAttribute("data-label","Average Height");
 
     //Put data in those cells
     let newText = document.createTextNode(results.siteName);
