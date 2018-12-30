@@ -132,9 +132,21 @@ footer {
 		font-weight: bolder;
 	}
 
+	#GoogleMapsContainer {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
 	#MapLegend span {
 		font-size: 2.3vw ;
 		font-weight: bolder;
+	}
+
+	#TableContainer {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 
 	tr {

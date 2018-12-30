@@ -1,0 +1,47 @@
+import requests
+import csv
+import pandas as pd
+import numpy as np
+import json
+
+sitelist = csv.reader(open('SiteList.csv','r'),delimiter='\t')
+sitearray = []
+
+#This script was used to go through a list of sites in a csv (SiteList.csv) and generate a JSON object with the site name and site average.
+#The file generated can be found in public/data.json
+
+numberholder = "0"
+for row in sitelist:
+    if row[0][0] == "8":
+        sitearray.append(numberholder + row[0])
+
+def processAlpha(listofsites):
+    containerArray = {}
+    for site in listofsites:
+        url = "https://waterservices.usgs.gov/nwis/stat/?format=rdb&sites={site}&statReportType=annual&statTypeCd=mean&missingData=on&parameterCd=00065".format(site=site)
+        file = open("{site}.txt".format(site=site),"w+")
+        file.write(requests.get(url.format(site=site)).text)
+        file.close()
+        file = open("{site}.txt".format(site=site),'r')
+        print("Processing {site}".format(site=site))
+        if (file.read().find('Response-Message') == -1):
+            csvfile= pd.read_csv('{site}.txt'.format(site=site),delimiter="\t",header=33,error_bad_lines=False)
+            csvfile= csvfile.to_csv("{site}.csv".format(site=site),encoding='utf-8',index=False)
+            csvfile = csv.reader(open("{site}.csv".format(site=site), 'r'), delimiter=',')
+            avgholder = [];
+            newl = list(csvfile)
+            for row in newl[-6:]:
+              avgholder.append(float(row[-1]))
+              Average = (np.mean(avgholder))
+              STDev = np.std(avgholder)
+
+            containerArray.update({"{site}".format(site=site):{"SiteName":site,"Mean":Average,"STDev":STDev}})
+        else:
+            containerArray.update({"{site}".format(site=site):{"SiteName":site,"Mean":"N/A","STDev":"N/A"}})
+    print("Process Alpha Complete")
+    return containerArray
+
+
+
+with open('data.json','w+') as outfile:
+    json.dump(processAlpha(sitearray), outfile)
