@@ -22,7 +22,7 @@ const mapConfig = {
   lat: Houston.cityCenter[0],
   lng: Houston.cityCenter[1]
 };
-const initMap = function() {
+const initMap = () => {
   map = new google.maps.Map(document.getElementById('GoogleMapsContainer'), {
     center: mapConfig,
     zoom: 11,
@@ -33,7 +33,7 @@ window.initMap = initMap;
 
 
 const computeValueOverMean = (value, mean) => {
-  let valoveravg = mean == "N/A" ? "N/A" : (value / mean);
+  const valoveravg = mean == "N/A" ? "N/A" : (value / mean);
   if (valoveravg == "N/A") {
     return "N/A";
   } else if (valoveravg <=1.25) {
@@ -45,8 +45,8 @@ const computeValueOverMean = (value, mean) => {
   };
 };
 
-const renderMarkers = function(data) {
-  data.forEach(function(element) {
+const renderMarkers = (data) => {
+  data.forEach( (element)  => {
     let marker = new google.maps.Marker({
       position: new google.maps.LatLng(element.siteCoords[0], element.siteCoords[1]),
       map: map,
@@ -54,9 +54,9 @@ const renderMarkers = function(data) {
       id: element.siteCode,
       });
 
-    let infowindow = new google.maps.InfoWindow({
-      content: `${element.siteName}.  Water Height:${element.siteValue} ft`
-    });
+    let infowindow = new google.maps.InfoWindow(
+      {content: `${element.siteName}.  Water Height:${element.siteValue} ft`}
+    );
 
 
     if (computeValueOverMean(element.siteValue, element.siteMean) == "N/A") {
@@ -73,7 +73,7 @@ const renderMarkers = function(data) {
   });
 };
 
-const cityInit = function(arrayofcities) {
+const cityInit = (arrayofcities) => {
   arrayofcities.forEach(function(cityInArray) {
     //Call init function of each city and populate map with markers
     cityInArray.init();
@@ -86,7 +86,7 @@ cityInit(cityArray);
 
 
 //Functions (event handlers) that handle changing the map when city names are clicked on
-const changeMapLocationOnClick = function() {
+const changeMapLocationOnClick = () => {
   map.setCenter({
     lat: eval(this.id).cityCenter[0],
     lng: eval(this.id).cityCenter[1]
@@ -111,7 +111,7 @@ const changeTableOnClick = function() {
 
 //Add each event handler to each li element
 
-document.querySelectorAll("li").forEach(function(link) {
+document.querySelectorAll("li").forEach( (link) => {
   link.addEventListener("click", changeMapLocationOnClick);
   link.addEventListener("click", changeTableOnClick);
 });
@@ -119,12 +119,12 @@ document.querySelectorAll("li").forEach(function(link) {
 //-----------------------------------------------------------------------
 
 //Function to initialize the table
-const initTable = function(city) {
+const initTable = (city) => {
   //Refactor this before it becomes a monster
   let row = document.getElementById('TABLE');
-  city.stationData.then(function(data) {
+  city.stationData.then( (data) => {
     document.getElementById("TableCaptionCityName").innerHTML=`${city.cityName}`;
-  data.map(function(results) {
+  data.map( (results) => {
     //Create a new row
     let newRow = row.insertRow(1);
     newRow.className+=`${city.cityName}`;
@@ -152,13 +152,13 @@ const initTable = function(city) {
     /*Style each table row depending on site value to site mean ratio (see computeValueOverMean function)
     class names come from SemanticUI. See: https://semantic-ui.com/collections/table.html */
 
-    if (computeValueOverMean(results.siteValue, results.siteMean) == "N/A") {
+    if (computeValueOverMean(results.siteValue, results.siteMean) === "N/A") {
       newRow.className+=" active";
-    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Safe") {
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) === "Safe") {
       newRow.className+=" positive";
-    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Caution") {
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) === "Caution") {
       newRow.className+=" warning";
-    } else if (computeValueOverMean(results.siteValue, results.siteMean) == "Danger") {
+    } else if (computeValueOverMean(results.siteValue, results.siteMean) === "Danger") {
       newRow.className+=" negative";
     };
 

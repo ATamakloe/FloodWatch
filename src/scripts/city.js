@@ -1,6 +1,7 @@
 import dataJSON from '../../public/data.json'
 class City {
-  static cityArr = [];
+  static cityArr = [];  //ESLint wont like this, ignore it
+
 
   static checkCityArr(cityName) {
     if (City.cityArr.indexOf(cityName) != -1) {
@@ -13,22 +14,24 @@ class City {
 
   constructor(cityName, cityCenterLocation, cityBBox) {
     City.checkCityArr(cityName);
+    //Check if city already exists, if so, throw error. This prevents multiple
+    //city objects from being created
     this._cityName = cityName;
     this._cityCenter = cityCenterLocation;
     this._cityBBox = cityBBox;
     this._stationData = [];
 
-    this._date = (function(){
+    this._date = (() => {
       const date = new Date();
-      return new Date(date.getTime() - (date.getTimezoneOffset() * 60000) - 30 * 60000).toISOString();
+      return new Date(date.getTime() - (date.getTimezoneOffset() * 60000) - 30 * 60000).toISOString()
     })();
 
     this._url = `https://waterservices.usgs.gov/nwis/iv/?format=json&variable=00065&bBox=${this.cityBBox}&startDT=${this._date}`;
 
     this.getStationData = async function() {
       let response = await fetch(this.url);
-      let responsev2 = await response.json();
-      let data = responsev2.value.timeSeries;
+      response = await response.json();
+      const data = response.value.timeSeries;
       let stationArray = data.map(data => ({
         siteName: data.sourceInfo.siteName,
         siteCode: data.sourceInfo.siteCode[0].value,
@@ -37,7 +40,7 @@ class City {
         siteValue: data.values["0"].value.slice(-1)[0] ? data.values["0"].value.slice(-1)[0].value : "Value unavailable",
         siteMean: dataJSON.hasOwnProperty(data.sourceInfo.siteCode[0].value) ? dataJSON[data.sourceInfo.siteCode[0].value].Mean : "N/A",
       }));
-      stationArray = stationArray.filter(station => station.siteValue != "Value unavailable");
+      stationArray = stationArray.filter(station => station.siteValue !== "Value unavailable");
       return stationArray;
     };
   }
