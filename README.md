@@ -4,7 +4,7 @@ FloodWatch (TexasWaterWatch) is a web app made to monitor water levels in flood 
 
 # Why Was This Built?
 
-The motivation behind this project was to build something simple that people can use to protect themselves from high water.
+Floods regularly wreak havoc on cities located near the Gulf Coast. This was built to help people living in flood prone areas monitor water levels in their cities.
 
 #How Does This Work?
 
