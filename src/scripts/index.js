@@ -86,7 +86,7 @@ cityInit(cityArray);
 
 
 //Functions (event handlers) that handle changing the map when city names are clicked on
-const changeMapLocationOnClick = () => {
+const changeMapLocationOnClick = function() {
   map.setCenter({
     lat: eval(this.id).cityCenter[0],
     lng: eval(this.id).cityCenter[1]
