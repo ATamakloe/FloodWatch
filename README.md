@@ -4,7 +4,11 @@ FloodWatch (TexasWaterWatch) is a web app made to monitor water levels in flood 
 
 # Why Was This Built?
 
+<<<<<<< HEAD
 Floods regularly wreak havoc on cities located near the Gulf Coast. This was built to help people living in flood prone areas monitor water levels in their cities.
+=======
+The motivation behind this project was to build something simple that people can use to protect themselves from high water.
+>>>>>>> 5e4e49e8b89f4a5064ee0a7930723052b9bb4a8e
 
 #How Does This Work?
 
@@ -12,7 +16,11 @@ TexasWaterWatch is powered by data from USGS water sensors and Google Maps.
 
 Data is retrieved using the USGS API and represented using Google Maps and a basic HTML Table.
 
+<<<<<<< HEAD
 The UI is intentionally pretty sparse. The idea behind the design was to present as little non-critical information as possible.
+=======
+The UI is intentionally pretty sparse. The idea behind the design was to present as little non-critical information.
+>>>>>>> 5e4e49e8b89f4a5064ee0a7930723052b9bb4a8e
 Symbology and color-coding are heavily used to make the data easy to understand
 
 #Major Files
