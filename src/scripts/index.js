@@ -1,4 +1,4 @@
-import {City} from './city';
+import City from './city';
 import styles from '../styles/styles.css';
 
 let time = document.getElementById('CurrentTime');
@@ -117,7 +117,6 @@ document.querySelectorAll("li").forEach( (link) => {
 });
 
 //-----------------------------------------------------------------------
-
 //Function to initialize the table
 const initTable = (city) => {
   //Refactor this before it becomes a monster

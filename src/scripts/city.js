@@ -1,4 +1,5 @@
 import dataJSON from '../../public/data.json'
+
 class City {
   static cityArr = [];  //ESLint wont like this, ignore it
 
@@ -14,8 +15,7 @@ class City {
 
   constructor(cityName, cityCenterLocation, cityBBox) {
     City.checkCityArr(cityName);
-    //Check if city already exists, if so, throw error. This prevents multiple
-    //city objects from being created
+    //Check if city already exists, if so, throw error. This prevents duplicate cities
     this._cityName = cityName;
     this._cityCenter = cityCenterLocation;
     this._cityBBox = cityBBox;
@@ -78,6 +78,4 @@ class City {
 
 
 
-export {
-  City
-};
+export default City;
